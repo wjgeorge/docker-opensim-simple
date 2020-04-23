@@ -1,5 +1,7 @@
 FROM mono
 
+RUN apt-get update && apt-get upgrade -y && apt-get install vim -y
+
 COPY opensim-0.9.1.1.tar.gz /
 RUN tar xzf opensim-0.9.1.1.tar.gz && rm -f opensim-0.9.1.1.tar.gz
 COPY Regions.ini /opensim-0.9.1.1/bin/Regions/Regions.ini
