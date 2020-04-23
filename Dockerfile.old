@@ -1,9 +1,13 @@
 FROM mono
 
-RUN curl http://dist.opensimulator.org/opensim-0.9.0.0.tar.gz -s | tar xzf -
-COPY Regions.ini /opensim-0.9.0.0/bin/Regions/Regions.ini
-COPY OpenSim.ini /opensim-0.9.0.0/bin/OpenSim.ini
-EXPOSE 9000
-WORKDIR /opensim-0.9.0.0/bin
+COPY opensim-0.9.1.1.tar.gz /
+RUN tar xzf opensim-0.9.1.1.tar.gz && rm -f opensim-0.9.1.1.tar.gz
+COPY Regions.ini /opensim-0.9.1.1/bin/Regions/Regions.ini
+COPY OpenSim.ini /opensim-0.9.1.1/bin/OpenSim.ini
+COPY SQLiteStandalone.ini /opensim-0.9.1.1/bin/config-include/storage/SQLiteStandalone.ini
+RUN mkdir /var/opensim
+EXPOSE 9000/tcp
+EXPOSE 9000/udp
+WORKDIR /opensim-0.9.1.1/bin
 
 CMD [ "mono",  "./OpenSim.exe" ]
