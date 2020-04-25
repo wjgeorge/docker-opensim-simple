@@ -6,3 +6,6 @@ location MyRegion
 
 -----
 docker run -it -p 9000:9000/tcp -p 9000:9000/udp -v "/tmp/foo:/var/opensim" opensim-simple screen
+
+add code to pass the hostname, add to the /etc/hosts file
+does docker know its hosts name?
