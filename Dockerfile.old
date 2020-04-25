@@ -21,6 +21,9 @@ COPY Regions.ini Regions/Regions.ini
 COPY OpenSim.ini .
 COPY StandaloneCommon.ini config-include/StandaloneCommon.ini
 COPY SQLiteStandalone.ini config-include/storage/SQLiteStandalone.ini
+COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so /opensim-0.9.1.1/bin/libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so
+COPY OpenMetaverse.dll.config /opensim-0.9.1.1/bin/OpenMetaverse.dll.config
+
 RUN mkdir -p /var/opensim
 EXPOSE 9000/tcp
 EXPOSE 9000/udp
