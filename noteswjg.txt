@@ -5,4 +5,12 @@ password xyzzy123
 location MyRegion
 
 -----
+Must enable UDP to complete region handshake
+
+---
 docker run -it -p 9000:9000/tcp -p 9000:9000/udp -v "/tmp/foo:/var/opensim" opensim-simple screen
+
+---
+update hosts files with billg-rpu.local to point to ip address
+also Opensim.ini
+and Regions/Regions.ini
