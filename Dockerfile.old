@@ -4,13 +4,14 @@ FROM mono
 #   move to /opt/opensim-xxxx
 #   symlink to /opt/opensim
 #   mkdir -f to not fail if there is one
+# also add ifconfig and ping
 
 ARG VERSION_TAG=opensim-0.9.1.1
 ARG TARGET_DIR=/opt
 # fixup Debian archiving glitch
 RUN sed -i "/-updates/D" /etc/apt/sources.list; \
 	sed -i "s/stable-//" /etc/apt/sources.list.d/mono-official-vs.list
-RUN apt-get update && apt-get upgrade -y && apt-get install vim inetutils-ping -y
+RUN apt-get update && apt-get upgrade -y && apt-get install vim inetutils-ping net-tools -y
 
 # ADD also extracts
 ADD ${VERSION_TAG}.tar.gz ${TARGET_DIR}
