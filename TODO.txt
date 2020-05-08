@@ -1,4 +1,14 @@
 multiplatform
 
-pass hostname to container and patch /etc/hosts
+- pass hostname to container and patch /etc/hosts
    does docker know its own host name?
+
+- why does it need UDP for region handshake
+
+- PYOGP login
+
+- add testclient
+
+- add Radegast
+
+- add LLVIEWER
