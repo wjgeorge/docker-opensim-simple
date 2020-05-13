@@ -1,0 +1,6 @@
+multiplatform
+
+pass hostname to container and patch /etc/hosts
+   does docker know its own host name?
+
+Fixup the stupid grid name
