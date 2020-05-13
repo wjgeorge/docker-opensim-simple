@@ -7,6 +7,8 @@ multiplatform
    
 - use git branches as build context (ohhhh)
 
+- USE modules!
+
 - why does it need UDP for region handshake
 
 - PYOGP login
