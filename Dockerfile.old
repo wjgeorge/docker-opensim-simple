@@ -1,17 +1,20 @@
 FROM mono
 
 # fixup Debian archiving glitch
+# also add ifconfig and ping
 RUN sed -i "/-updates/D" /etc/apt/sources.list; \
 	sed -i "s/stable-//" /etc/apt/sources.list.d/mono-official-vs.list
-RUN apt-get update && apt-get upgrade -y && apt-get install vim inetutils-ping -y
+RUN apt-get update && apt-get upgrade -y && apt-get install vim iputils-ping net-tools -y
 
 COPY opensim-0.9.1.1.tar.gz /
 RUN tar xzf opensim-0.9.1.1.tar.gz && rm -f opensim-0.9.1.1.tar.gz
 COPY Regions.ini /opensim-0.9.1.1/bin/Regions/Regions.ini
 COPY OpenSim.ini /opensim-0.9.1.1/bin/OpenSim.ini
+COPY StandaloneCommon.ini /opensim-0.9.1.1/bin/config-include/StandaloneCommon.ini
 COPY SQLiteStandalone.ini /opensim-0.9.1.1/bin/config-include/storage/SQLiteStandalone.ini
 COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so /opensim-0.9.1.1/bin/libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so
 COPY OpenMetaverse.dll.config /opensim-0.9.1.1/bin/OpenMetaverse.dll.config
+COPY opensim.sh /opensim-0.9.1.1/bin/opensim.sh
 
 RUN mkdir /var/opensim
 EXPOSE 9000/tcp
