@@ -2,18 +2,18 @@
 
 It is based on [official mono docker image](https://hub.docker.com/_/mono/).
 
-* [OpenSimulator](http://opensimulator.org) 0.9.0.0-rc2
+* [OpenSimulator](http://opensimulator.org) 0.9.1.1
 * Standalone Mode (port 9000)
 * Username: Test User 
-* Password: password
+* Password: xyzzy123
 
-For other settings, look at OpenSim.ini and Regions.ini.
+For other settings, look at OpenSim.ini, Regions.ini, StandaloneCommon.ini
 
 ### Building
 
 1. Clone or download this project.
 
-2. Modify OpenSim.ini and Regions.ini to your preference.
+2. Modify OpenSim.ini, Regions.ini, StandaloneCommon.ini to your preference.
 
 3. Run docker build command.
 
@@ -23,10 +23,10 @@ $ docker build -t opensim .
 
 ### Running
 
-You will need to forward both TCP and UDP port 9000 to your host.
+You will need to forward both TCP and UDP port 9000 to your host. Persistance is add using a volume mount to a host directory on /tmp/foo
 
 ```
-$ docker run --name=opensim -p 9000:9000 -p 9000:9000/udp -d opensim
+$ docker run --name=opensim -p 9000:9000 -p 9000:9000/udp -d -v "/tmp/foo:/var/opensim" opensim
 ```
 
 You can see the console logs like that:
@@ -38,7 +38,7 @@ $ docker logs -f opensim
 If you need to run any admin command on console, start the container like that:
 
 ```
-$ docker run --name=opensim -it -p 9000:9000 -p 9000:9000/udp opensim
+$ docker run --name=opensim -it -p 9000:9000 -p 9000:9000/udp -v "/tmp/foo:/var/opensim" opensim
 ```
 
 NOTE: Currently, you may not be able to terminate the docker container even if you 'quit' the console. You'll need to run docker stop command from another terminal to kill the container.
@@ -55,3 +55,4 @@ If you use Docker Toolbox or other hosts than localhost, "localhost" should be c
 ### Maintainer
 
 Makopoppo (SL Name: Mako Nozaki)
+modified wjgeorge (wjgeorge7@yahoo.com)
