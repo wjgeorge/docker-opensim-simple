@@ -25,21 +25,27 @@ $ docker build -t opensim .
 
 You will need to forward both TCP and UDP port 9000 to your host. Persistance is add using a volume mount to a host directory on /tmp/foo
 
+To run an admin command on console, start the container like that:
+
+```
+$ docker run --name=opensim -it -p 9000:9000 -p 9000:9000/udp -v "/tmp/foo:/var/opensim" opensim
+```
+
+To use an external host name:
+
+At this point, this cannot be run unless the /etc/hosts name is patched to the external hosts name.
+
+To run as a daemon (doesnt work with external host name)
 ```
 $ docker run --name=opensim -p 9000:9000 -p 9000:9000/udp -d -v "/tmp/foo:/var/opensim" opensim
 ```
 
-You can see the console logs like that:
+You can see the console logs like this:
 
 ```
 $ docker logs -f opensim
 ```
 
-If you need to run any admin command on console, start the container like that:
-
-```
-$ docker run --name=opensim -it -p 9000:9000 -p 9000:9000/udp -v "/tmp/foo:/var/opensim" opensim
-```
 
 NOTE: Currently, you may not be able to terminate the docker container even if you 'quit' the console. You'll need to run docker stop command from another terminal to kill the container.
 
