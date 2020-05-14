@@ -1,7 +1,13 @@
 multiplatform
 
 - pass hostname to container and patch /etc/hosts
-   does docker know its own host name?
+   does docker know its own host name? 
+   
+   see --add-host on docker run
+   
+- use git branches as build context (ohhhh)
+
+- USE modules!
 
 - why does it need UDP for region handshake
 
@@ -12,5 +18,5 @@ multiplatform
 - add Radegast
 
 - add LLVIEWER
-=======
-Fixup the stupid grid name
+
+- fix the grid name
