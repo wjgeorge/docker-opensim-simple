@@ -18,3 +18,5 @@ multiplatform
 - add Radegast
 
 - add LLVIEWER
+
+- fix the grid name
