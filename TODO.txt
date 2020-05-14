@@ -1,6 +1,7 @@
 multiplatform
 
 - does docker know its own host name? 
+   see --add-host on docker run
    
 - use git branches as build context (ohhhh)
 
@@ -13,8 +14,6 @@ multiplatform
 - add testclient
 
 - add LLVIEWER
-
-- fix the grid name
 
 - add batch file (in startup.txt) to add test1 user and test2 user
 
