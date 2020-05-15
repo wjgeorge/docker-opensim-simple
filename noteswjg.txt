@@ -14,3 +14,7 @@ docker run -it -p 9000:9000/tcp -p 9000:9000/udp -v "/tmp/foo:/var/opensim" open
 update hosts files with billg-rpu.local to point to ip address
 also Opensim.ini
 and Regions/Regions.ini
+=======
+
+---
+if login returns only "login failed" missed the entry in the hosts file

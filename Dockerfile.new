@@ -15,9 +15,10 @@ RUN echo $TZ > /etc/timezone && apt-get update && apt-get install -y -q curl scr
                      && rm /etc/localtime  \
                      && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
                      && dpkg-reconfigure -f noninteractive tzdata \
-                     && apt-get clean \
                      && rm -rf /tmp/* /var/tmp/*  \
-                     && rm -rf /var/lib/apt/lists/*
+		     && apt-get install -y x11-apps vim
+                     # && apt-get clean \
+                     # && rm -rf /var/lib/apt/lists/*
  
 RUN apt-get install -y -q curl screen mono-complete ca-certificates-mono
 RUN curl http://dist.opensimulator.org/opensim-0.9.1.1.tar.gz -s | tar xzf -
