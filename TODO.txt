@@ -1,9 +1,6 @@
 multiplatform
 
-- pass hostname to container and patch /etc/hosts
-   does docker know its own host name? 
-   
-   see --add-host on docker run
+- does docker know its own host name? 
    
 - use git branches as build context (ohhhh)
 
@@ -14,8 +11,6 @@ multiplatform
 - PYOGP login
 
 - add testclient
-
-- add Radegast
 
 - add LLVIEWER
 
