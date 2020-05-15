@@ -19,3 +19,10 @@ multiplatform
 - add batch file (in startup.txt) to add test1 user and test2 user
 
 - figure out OpenSim.Console
+
+- consider permissions (no go-rwx)
+     run as user opensim
+
+- create "latest/ greatest" dockerfile
+
+- create alpine version
