@@ -15,3 +15,7 @@ multiplatform
 - add LLVIEWER
 
 - fix the grid name
+
+- add batch file (in startup.txt) to add test1 user and test2 user
+
+- figure out OpenSim.Console

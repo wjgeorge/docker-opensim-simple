@@ -1,18 +1,28 @@
 FROM mono
 
+# TODO:
+#   move to /opt/opensim-xxxx
+#   symlink to /opt/opensim
+#   mkdir -f to not fail if there is one
+
+ARG VERSION_TAG=opensim-0.9.1.1
+ARG TARGET_DIR=/opt
 # fixup Debian archiving glitch
 RUN sed -i "/-updates/D" /etc/apt/sources.list; \
 	sed -i "s/stable-//" /etc/apt/sources.list.d/mono-official-vs.list
 RUN apt-get update && apt-get upgrade -y && apt-get install vim inetutils-ping -y
 
-COPY opensim-0.9.1.1.tar.gz /
-RUN tar xzf opensim-0.9.1.1.tar.gz && rm -f opensim-0.9.1.1.tar.gz
-COPY Regions.ini /opensim-0.9.1.1/bin/Regions/Regions.ini
-COPY OpenSim.ini /opensim-0.9.1.1/bin/OpenSim.ini
-COPY SQLiteStandalone.ini /opensim-0.9.1.1/bin/config-include/storage/SQLiteStandalone.ini
-RUN mkdir /var/opensim
+# ADD also extracts
+ADD ${VERSION_TAG}.tar.gz ${TARGET_DIR}
+RUN rm -f /opt/opensim; ln -s ${TARGET_DIR}/${VERSION_TAG} /opt/opensim
+
+WORKDIR /opt/opensim/bin
+COPY Regions.ini Regions/Regions.ini
+COPY OpenSim.ini .
+COPY StandaloneCommon.ini config-include/StandaloneCommon.ini
+COPY SQLiteStandalone.ini config-include/storage/SQLiteStandalone.ini
+RUN mkdir -p /var/opensim
 EXPOSE 9000/tcp
 EXPOSE 9000/udp
-WORKDIR /opensim-0.9.1.1/bin
 
 CMD [ "mono",  "./OpenSim.exe" ]
