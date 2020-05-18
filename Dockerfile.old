@@ -1,13 +1,8 @@
 FROM mono
 
-# TODO:
-#   move to /opt/opensim-xxxx
-#   symlink to /opt/opensim
-#   mkdir -f to not fail if there is one
-# also add ifconfig and ping
-
 ARG VERSION_TAG=opensim-0.9.1.1
 ARG TARGET_DIR=/opt
+
 # fixup Debian archiving glitch
 # also add ifconfig and ping
 RUN sed -i "/-updates/D" /etc/apt/sources.list; \
