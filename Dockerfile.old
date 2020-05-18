@@ -9,21 +9,22 @@ RUN sed -i "/-updates/D" /etc/apt/sources.list; \
 	sed -i "s/stable-//" /etc/apt/sources.list.d/mono-official-vs.list
 RUN apt-get update && apt-get upgrade -y && apt-get install vim inetutils-ping net-tools -y
 
+# =====
 # ADD also extracts
 ADD ${VERSION_TAG}.tar.gz ${TARGET_DIR}
 RUN rm -f /opt/opensim; ln -s ${TARGET_DIR}/${VERSION_TAG} /opt/opensim
 
 WORKDIR /opt/opensim/bin
-COPY Regions.ini Regions/Regions.ini
+COPY Regions.ini Regions/
 COPY OpenSim.ini .
-COPY StandaloneCommon.ini config-include/StandaloneCommon.ini
-COPY SQLiteStandalone.ini config-include/storage/SQLiteStandalone.ini
-COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-armv7l.so libopenjpeg-dotnet-2-1.5.0-dotnet-1-armv7l.so
-COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so
-COPY libode-arm7.so.4.1.0 libode-arm7.so.4.1.0
-COPY libode.so.4.1.0 libode.so.4.1.0
-COPY OpenMetaverse.dll.config OpenMetaverse.dll.config
-COPY OpenSim.Region.PhysicsModule.Ode.dll.config OpenSim.Region.PhysicsModule.Ode.dll.config
+COPY StandaloneCommon.ini config-include/
+COPY SQLiteStandalone.ini config-include/storage/
+COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-armv7l.so .
+COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so .
+COPY libode-arm7.so.4.1.0 .
+COPY libode.so.4.1.0 .
+COPY OpenMetaverse.dll.config .
+COPY OpenSim.Region.PhysicsModule.Ode.dll.config .
 
 RUN mkdir -p /var/opensim
 EXPOSE 9000/tcp

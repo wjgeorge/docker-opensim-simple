@@ -24,6 +24,6 @@ multiplatform
 
 - create "latest/ greatest" dockerfile
 
-- create alpine version
+- create alpine version (minimal version)
 =======
 - fix the grid name
