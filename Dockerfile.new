@@ -1,5 +1,5 @@
 # FROM mono
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 #to fix problem with /etc/localtime
 ENV TZ America/New_York
@@ -10,13 +10,13 @@ ENV DEBIAN_FRONTEND noninteractive
 #nant was remove and added mono build dependence
 RUN apt-get update && apt-get upgrade -y && apt-get install -y gnupg
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-   && echo "deb http://download.mono-project.com/repo/ubuntu bionic main" | tee /etc/apt/sources.list.d/mono-official.list
+   && echo "deb http://download.mono-project.com/repo/ubuntu focal main" | tee /etc/apt/sources.list.d/mono-official.list
 RUN echo $TZ > /etc/timezone && apt-get update && apt-get install -y -q curl screen mono-complete ca-certificates-mono tzdata \
                      && rm /etc/localtime  \
                      && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
                      && dpkg-reconfigure -f noninteractive tzdata \
-                     && rm -rf /tmp/* /var/tmp/*  \
-		     && apt-get install -y x11-apps vim
+		     && apt-get install x11-apps vim -y
+                     # && rm -rf /tmp/* /var/tmp/*  \
                      # && apt-get clean \
                      # && rm -rf /var/lib/apt/lists/*
  
