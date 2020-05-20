@@ -1,4 +1,4 @@
-# PLATFORM="--platform linux/arm/v8"
+# PLATFORM=--platform linux/arm/v8
 TARGET=opensim-0.9.1.1
 
 all: build run
