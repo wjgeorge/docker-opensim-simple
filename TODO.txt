@@ -27,3 +27,5 @@ multiplatform
 - create alpine version (minimal version)
 =======
 - fix the grid name
+
+- how is SQLlite even working in RPI?

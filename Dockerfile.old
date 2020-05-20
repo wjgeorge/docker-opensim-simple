@@ -18,11 +18,10 @@ WORKDIR /opt/opensim/bin
 COPY Regions.ini Regions/
 COPY OpenSim.ini .
 COPY StandaloneCommon.ini config-include/
-COPY SQLiteStandalone.ini config-include/storage/
 COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-armv7l.so .
 COPY libopenjpeg-dotnet-2-1.5.0-dotnet-1-aarch64.so .
 COPY libode-arm7.so.4.1.0 .
-COPY libode.so.4.1.0 .
+COPY libode-aarch64.so.4.1.0 .
 COPY OpenMetaverse.dll.config .
 COPY OpenSim.Region.PhysicsModule.Ode.dll.config .
 
