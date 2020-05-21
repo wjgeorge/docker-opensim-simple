@@ -29,3 +29,9 @@ multiplatform
 - fix the grid name
 
 - how is SQLlite even working in RPI?
+   (looks like it wasnt correctly installed!), dont even need the libraries
+   (only Mono.Data.Sqllite.dll!)
+
+- fixup libraries
+
+- allow 32bit arm to run on 64bit arm
