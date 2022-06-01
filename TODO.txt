@@ -1,6 +1,7 @@
 multiplatform
 
 - does docker know its own host name? 
+	not sure why i need this. use $HOSTNAME at runtime
    
 - use git branches as build context (ohhhh)
 
@@ -15,3 +16,14 @@ multiplatform
 - add LLVIEWER
 
 - fix the grid name
+
+- use volume for persistance, create a new network and bridge it with host
+
+- how is persistance actaully working!!!??? (gRPC Fuse messed me UP!)
+
+- fix swarmy "The page you requested has been obsconded with by knomes. Find hippos quick!"
+     should meantion get_host_info and OpenSim.ini public setting (if standalone)
+
+- docker build is noisey by default (i set it to use legacy)
+
+- doesnt seem to be caching mono image anymore 
